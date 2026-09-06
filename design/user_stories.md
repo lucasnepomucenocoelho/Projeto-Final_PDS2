@@ -55,4 +55,33 @@
 - Filtrar por categoria (jogo, console, acessório).
 - Filtrar por condição (novo/usado).
 - Exibir produtos esgotados como indisponíveis.
+## US05 — Histórico de pedidos
+
+**Como** cliente,  
+**quero** consultar meus pedidos anteriores,  
+**para** acompanhar minhas compras.
+
+### Critérios de aceite
+- Listar todos os pedidos do cliente.
+- Exibir o status do pedido (pendente, enviado, entregue, cancelado).
+- Exibir os itens e valores de um pedido específico.
+- Permitir o cancelamento do pedido caso ele ainda não tenha sido enviado.
+
+---
+
+## US06 — Venda de produto usado
+
+**Como** cliente,  
+**quero** cadastrar um jogo, console ou acessório usado para vender à loja,  
+**para** receber uma oferta pelo produto.
+
+### Critérios de aceite
+- Informar o tipo de produto (jogo, console ou acessório).
+- Informar a plataforma do produto.
+- Informar o título ou nome do produto.
+- Informar a condição do produto (novo/usado).
+- Descrever o estado de conservação do item.
+- Sugerir um preço de venda.
+- Consultar o status da solicitação (em análise, aprovada, recusada).
+- Visualizar o valor final ofertado pela loja.
 
