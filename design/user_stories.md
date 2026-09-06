@@ -27,3 +27,31 @@
 - Gerar pedido a partir dos itens do carrinho.
 - Dar baixa no estoque dos produtos comprados.
 - Esvaziar o carrinho após confirmação.
+# User Stories
+
+## US03 — Cadastro e gestão de perfil
+**Como** cliente,
+**quero** criar e editar meu perfil,
+**para** comprar e vender produtos na loja.
+
+### Critérios de aceite
+- Cadastro com nome, email, senha e endereço.
+- Validar formato de email e tamanho mínimo de senha.
+- Impedir cadastro com email já existente.
+- Editar dados cadastrais.
+- Excluir a própria conta.
+
+---
+
+## US04 — Busca e filtro de produtos
+**Como** cliente,
+**quero** buscar jogos, consoles e acessórios por plataforma, categoria e condição,
+**para** encontrar o que procuro.
+
+### Critérios de aceite
+- Listar produtos disponíveis.
+- Filtrar por plataforma (PS5, Xbox, Switch, PC).
+- Filtrar por categoria (jogo, console, acessório).
+- Filtrar por condição (novo/usado).
+- Exibir produtos esgotados como indisponíveis.
+

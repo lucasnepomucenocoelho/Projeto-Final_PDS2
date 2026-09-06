@@ -33,3 +33,23 @@
 
 **Colaboradores**
 - Pedido
+## Classe: Cliente
+**Responsabilidades**
+- Manter cadastro de endereços de entrega
+- Selecionar endereço de entrega para o pedido
+- Acessar seu carrinho de compras
+
+**Colaboradores**
+- Endereco
+- Carrinho
+
+---
+
+## Classe: Produto
+**Responsabilidades**
+- Fornecer preço por unidade
+- Informar quantidade disponível em estoque
+- Verificar se há estoque suficiente para uma quantidade pedida
+
+**Colaboradores**
+- Estoque 
