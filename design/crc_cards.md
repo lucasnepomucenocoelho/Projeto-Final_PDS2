@@ -59,3 +59,31 @@
 - Produto
 - Estoque
 - Pedido
+
+---
+
+## Classe: Pedido
+ 
+Responsabilidades
+- Armazenar itens comprados, valores e data.
+- Armazenar o endereço de entrega escolhido.
+- Manter o status do pedido (pendente, enviado, entregue, cancelado).
+- Calcular o valor total do pedido.
+- Solicitar o processamento do pagamento.
+- Solicitar a baixa no estoque dos itens comprados.
+- Permitir o cancelamento do pedido caso ainda esteja pendente.
+
+Colaborações: Cliente, Pagamento, Estoque
+
+---
+
+## Classe: SolicitacaoVenda
+
+Responsabilidades
+- Armazenar os dados do produto ofertado pelo cliente (tipo, plataforma, condição e preço sugerido).
+- Manter o status da solicitação (em análise, aprovada, recusada).
+- Armazenar o preço final definido pelo administrador.
+- Gerar um novo Produto no catálogo quando a solicitação for aprovada.
+- Vincular-se ao cliente vendedor.
+
+Colaborações: Cliente, Produto, Estoque
