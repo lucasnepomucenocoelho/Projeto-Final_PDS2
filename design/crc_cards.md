@@ -1,20 +1,5 @@
 # CRC Cards
 
-## Classe: Carrinho
-**Responsabilidades**
-- Adicionar produto com quantidade
-- Remover produto
-- Atualizar quantidade de um item
-- Calcular valor total
-- Validar quantidade solicitada contra o estoque disponível
-- Esvaziar carrinho
-
-**Colaboradores**
-- ItemCarrinho
-- Produto
-- Estoque
-- Pedido
-
 ---
 
 ## Classe: ItemCarrinho
@@ -25,6 +10,7 @@
 **Colaboradores**
 - Produto
 
+---
 
 ## Classe: Pagamento
 **Responsabilidades**
@@ -33,6 +19,9 @@
 
 **Colaboradores**
 - Pedido
+
+---
+
 ## Classe: Cliente
 **Responsabilidades**
 - Manter cadastro de endereços de entrega
@@ -53,3 +42,20 @@
 
 **Colaboradores**
 - Estoque 
+
+---
+
+## Classe: Carrinho
+**Responsabilidades**
+- Adicionar produto com quantidade
+- Remover produto
+- Atualizar quantidade de um item
+- Calcular valor total
+- Validar quantidade solicitada contra o estoque disponível
+- Esvaziar carrinho
+
+**Colaboradores**
+- ItemCarrinho
+- Produto
+- Estoque
+- Pedido

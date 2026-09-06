@@ -8,8 +8,8 @@
 
 ### Critérios de aceite
 - Adicionar produto ao carrinho com quantidade.
-- Remover produto do carrinho.
 - Atualizar quantidade de um item já adicionado.
+- Remover produto do carrinho.
 - Calcular valor total automaticamente.
 - Impedir adicionar quantidade maior que o estoque disponível.
 
@@ -27,6 +27,8 @@
 - Gerar pedido a partir dos itens do carrinho.
 - Dar baixa no estoque dos produtos comprados.
 - Esvaziar o carrinho após confirmação.
+
+---
 
 ## US03 — Cadastro e gestão de perfil
 **Como** cliente,
