@@ -27,7 +27,6 @@
 - Gerar pedido a partir dos itens do carrinho.
 - Dar baixa no estoque dos produtos comprados.
 - Esvaziar o carrinho após confirmação.
-# User Stories
 
 ## US03 — Cadastro e gestão de perfil
 **Como** cliente,
