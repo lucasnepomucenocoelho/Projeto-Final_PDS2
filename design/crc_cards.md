@@ -87,3 +87,13 @@ Responsabilidades
 - Vincular-se ao cliente vendedor.
 
 Colaborações: Cliente, Produto, Estoque
+
+### Estoque
+*Responsabilidades*
+- Manter quantidade disponível de cada produto
+- Verificar disponibilidade de quantidade solicitada
+- Dar baixa em quantidade após venda
+- Adicionar quantidade ao receber produto aprovado em SolicitacaoVenda
+- Notificar quando produto atinge quantidade mínima/esgotado
+
+*Colaborações:* Produto, Pedido, SolicitacaoVenda
