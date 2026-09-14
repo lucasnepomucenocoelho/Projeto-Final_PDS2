@@ -85,3 +85,17 @@
 - Consultar o status da solicitação (em análise, aprovada, recusada).
 - Visualizar o valor final ofertado pela loja.
 
+### US07 — Avaliação de solicitações de venda
+*Como* administrador, *quero* avaliar as solicitações de venda dos clientes *para* decidir se aceito o produto e por qual valor.
+- Listar solicitações de venda pendentes.
+- Aprovar solicitação definindo o preço final de compra.
+- Recusar solicitação com justificativa.
+- Adicionar produto aprovado automaticamente ao catálogo/estoque.
+
+### US08 — Cadastro e gestão de produtos
+*Como* administrador, *quero* cadastrar, editar e remover produtos *para* manter o catálogo atualizado.
+- Cadastrar produto com nome, preço, plataforma, categoria e condição.
+- Editar dados de um produto existente.
+- Remover produto do catálogo.
+- Atualizar quantidade em estoque manualmente.
+- Impedir remoção de produto com pedidos pendentes.
