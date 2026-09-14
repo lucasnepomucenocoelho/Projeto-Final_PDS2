@@ -99,3 +99,10 @@
 - Remover produto do catálogo.
 - Atualizar quantidade em estoque manualmente.
 - Impedir remoção de produto com pedidos pendentes.
+
+### US09 — Relatórios de vendas e compras
+*Como* administrador, *quero* gerar relatórios *para* acompanhar o desempenho da loja.
+- Gerar total de vendas em um período.
+- Listar produtos mais vendidos por plataforma/categoria.
+- Calcular ticket médio dos pedidos.
+- Gerar relatório de produtos usados comprados de clientes.
