@@ -12,6 +12,11 @@ class Jogo : public Produto {
 public:
     /**
      * @brief Construtor da classe Jogo.
+     * @param titulo Nome/título do produto.
+     * @param plataforma Plataforma associada (ex.: PS5, Xbox, PC, Switch).
+     * @param preco Preço de venda.
+     * @param condicao Condição do produto (novo ou usado).
+     * @param quantidadeEstoque Quantidade inicial em estoque.
      * @param genero Gênero do jogo (ex.: RPG, ação, esporte).
      * @param classificacaoIndicativa Classificação etária (ex.: "L", "12", "18").
      */

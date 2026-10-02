@@ -1,0 +1,15 @@
+# Doxyfile minimo - PDS II C06
+PROJECT_NAME           = "Loja de Video Games"
+PROJECT_BRIEF          = "E-commerce de compra e venda de jogos, consoles e acessorios"
+OUTPUT_DIRECTORY       = docs
+INPUT                  = include src
+RECURSIVE              = YES
+FILE_PATTERNS          = *.hpp *.cpp
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+JAVADOC_AUTOBRIEF      = YES
+QUIET                  = YES
+WARN_IF_UNDOCUMENTED   = YES

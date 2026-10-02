@@ -12,6 +12,11 @@ class Acessorio : public Produto {
 public:
     /**
      * @brief Construtor da classe Acessorio.
+     * @param titulo Nome/título do produto.
+     * @param plataforma Plataforma associada (ex.: PS5, Xbox, PC, Switch).
+     * @param preco Preço de venda.
+     * @param condicao Condição do produto (novo ou usado).
+     * @param quantidadeEstoque Quantidade inicial em estoque.
      * @param tipo Tipo do acessório (ex.: controle, headset, volante).
      * @param compativelCom Plataformas compatíveis, separadas por vírgula.
      */

@@ -12,6 +12,11 @@ class Console : public Produto {
 public:
     /**
      * @brief Construtor da classe Console.
+     * @param titulo Nome/título do produto.
+     * @param plataforma Plataforma associada (ex.: PS5, Xbox, PC, Switch).
+     * @param preco Preço de venda.
+     * @param condicao Condição do produto (novo ou usado).
+     * @param quantidadeEstoque Quantidade inicial em estoque.
      * @param capacidadeArmazenamento Capacidade de armazenamento em GB.
      * @param acompanhaControle Indica se acompanha ao menos um controle.
      */

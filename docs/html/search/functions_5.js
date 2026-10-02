@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['gerarrelatoriovendas_0',['gerarRelatorioVendas',['../class_administrador.html#aef4acf2f3d3e6536c96dd45f1f344b19',1,'Administrador']]],
+  ['getcapacidadearmazenamento_1',['getCapacidadeArmazenamento',['../class_console.html#a769c5d3a9d371c702d91d183515c813d',1,'Console']]],
+  ['getcarrinho_2',['getCarrinho',['../class_cliente.html#af8f9ffe08096303fccfc083c12a2525e',1,'Cliente']]],
+  ['getcategoria_3',['getCategoria',['../class_acessorio.html#ae43c0083783cae18fcf4bb0748eff9ab',1,'Acessorio::getCategoria()'],['../class_console.html#ababb4e79d15951434a9b86917698b284',1,'Console::getCategoria()'],['../class_jogo.html#a85818d0788de58f7940c16a33a4ceabb',1,'Jogo::getCategoria()'],['../class_produto.html#a4cdd74345f9621f5dd1a6391124830a3',1,'Produto::getCategoria()']]],
+  ['getclienteid_4',['getClienteId',['../class_solicitacao_venda.html#a7bb7043226a4da7576525fc8a6ee47e9',1,'SolicitacaoVenda']]],
+  ['getcondicao_5',['getCondicao',['../class_produto.html#aae0a3dd86ece85f5a35f48478191496b',1,'Produto']]],
+  ['getdescricaodetalhada_6',['getDescricaoDetalhada',['../class_acessorio.html#aa78b0946630f929a49ef36b308e4217f',1,'Acessorio::getDescricaoDetalhada()'],['../class_console.html#a23602a3d1590398a825ae999d5339fc9',1,'Console::getDescricaoDetalhada()'],['../class_jogo.html#ac74abf5570815f8e0adcb36dd1f1fadc',1,'Jogo::getDescricaoDetalhada()'],['../class_produto.html#ae9c418a9121e052493959c1cc0155cd0',1,'Produto::getDescricaoDetalhada()']]],
+  ['getemail_7',['getEmail',['../class_cliente.html#a70c56a588c12af9256e1c247e048c3eb',1,'Cliente']]],
+  ['getenderecoentrega_8',['getEnderecoEntrega',['../class_pedido.html#a0cdd2a9f8b43c13b698e8f399f283444',1,'Pedido']]],
+  ['getforma_9',['getForma',['../class_pagamento.html#acfcc3ebbb87f5f38cd76d31a8e304717',1,'Pagamento']]],
+  ['getgenero_10',['getGenero',['../class_jogo.html#aee535b94c5b2ff990fced8c6354a9f16',1,'Jogo']]],
+  ['gethistoricopedidos_11',['getHistoricoPedidos',['../class_cliente.html#a6ed1658e8e708b712267b0045a2a64e7',1,'Cliente']]],
+  ['getitens_12',['getItens',['../class_carrinho_de_compras.html#a336df6dd582c5e67cb8b5b402b50da5f',1,'CarrinhoDeCompras::getItens()'],['../class_pedido.html#a6c162a5450f02c64b5c4848aebd52f45',1,'Pedido::getItens()']]],
+  ['getnome_13',['getNome',['../class_cliente.html#abfd45b8b07a8549fe4761d00c76a43c3',1,'Cliente']]],
+  ['getplataforma_14',['getPlataforma',['../class_produto.html#a22cd87c521ca5cfc23230dacb5472f12',1,'Produto']]],
+  ['getpreco_15',['getPreco',['../class_produto.html#ace1d384192a7f2cfc7768afa6b7fcbf5',1,'Produto']]],
+  ['getprecofinal_16',['getPrecoFinal',['../class_solicitacao_venda.html#a6ebfc6b5d957d87e78fbcf9483a60e81',1,'SolicitacaoVenda']]],
+  ['getquantidadeestoque_17',['getQuantidadeEstoque',['../class_produto.html#adc210965b7e6f68a358442cf83c9c6f3',1,'Produto']]],
+  ['getsolicitacoesvenda_18',['getSolicitacoesVenda',['../class_cliente.html#a1a10b5d25932ec3dd1f9e51119570a10',1,'Cliente']]],
+  ['getstatus_19',['getStatus',['../class_pagamento.html#a8e7dcbdacc142b65bea911abfaa658bb',1,'Pagamento::getStatus()'],['../class_pedido.html#ade25746f2ad925a3fd1e5559da244d2b',1,'Pedido::getStatus()'],['../class_solicitacao_venda.html#ac9ad48f4d442be0881a64e485a3c07e5',1,'SolicitacaoVenda::getStatus()']]],
+  ['gettipo_20',['getTipo',['../class_acessorio.html#ac9d9752b6d98c72f73e3dcb9dbd2c4ce',1,'Acessorio']]],
+  ['gettitulo_21',['getTitulo',['../class_produto.html#acd34e379ef9d07f45f9290ad339c5b6c',1,'Produto']]],
+  ['getvalor_22',['getValor',['../class_pagamento.html#a58bfa30c7f2cf2c102ad5ad7c6dc4d27',1,'Pagamento']]]
+];
