@@ -6,7 +6,6 @@ CXX      := g++
 CXXFLAGS := -std=c++17 -Wall -Wextra -I include -I tests
 CXXFLAGS += -DDOCTEST_CONFIG_NO_MULTITHREADING
 
-
 # Fontes da aplicacao (exclui main.cpp para nao conflitar com o main do doctest)
 SRC      := $(filter-out src/main.cpp, $(wildcard src/*.cpp))
 MAIN     := src/main.cpp
@@ -48,7 +47,8 @@ coverage: clean
 	@mkdir -p build
 	$(CXX) $(CXXFLAGS) --coverage -O0 -g $(SRC) $(TEST_SRC) -o build/testes_cov
 	-./build/testes_cov || true
-	gcovr -r . --html --html-details -o build/coverage.html
+	gcovr -r . --filter "src/" --filter "include/" --html --html-details -o build/coverage.html
+	gcovr -r . --filter "src/" --filter "include/" --txt
 	@echo "Relatorio: build/coverage.html"
 
 # ============================================================

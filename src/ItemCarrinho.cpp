@@ -1,6 +1,6 @@
 #include "ItemCarrinho.hpp"
 
 double ItemCompra::subtotal() const {
-    // TODO (C8): retornar produto->getPreco() * quantidade.
-    return 0.0;
+    if (!produto) return 0.0;
+    return produto->getPreco() * quantidade;
 }
