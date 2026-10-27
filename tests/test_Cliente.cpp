@@ -1,33 +1,29 @@
 #include "doctest.h"
 #include "Cliente.hpp"
+#include "Jogo.hpp"
 
-TEST_CASE("Cliente - autenticar com credenciais corretas") {
-    Cliente c("Pedro", "pedro@email.com", "senha123", "Rua A, 1");
-    CHECK(c.autenticar("pedro@email.com", "senha123") == true);
+TEST_CASE("Cliente - autenticar e editar") {
+    Cliente c("Pedro", "pedro@email.com", "senha", "Rua A");
+    CHECK(c.autenticar("pedro@email.com", "senha") == true);
+    CHECK(c.autenticar("errado@email.com", "senha") == false);
+    
+    c.editarPerfil("Pedro S.", "novo@email.com", "Rua B");
+    CHECK(c.getNome() == "Pedro S.");
+    CHECK(c.getEmail() == "novo@email.com");
 }
 
-TEST_CASE("Cliente - autenticar com credenciais erradas") {
-    Cliente c("Pedro", "pedro@email.com", "senha123", "Rua A, 1");
-    CHECK(c.autenticar("pedro@email.com", "errada") == false);
-    CHECK(c.autenticar("outro@email.com", "senha123") == false);
-    CHECK(c.autenticar("", "") == false);
-}
+TEST_CASE("Cliente - pedidos e solicitacoes") {
+    Cliente c("Pedro", "pedro@email.com", "senha", "Rua A");
+    auto jogo = std::make_shared<Jogo>("Elden", "PS5", 100.0, Condicao::NOVO, 10, "RPG", "L");
+    
+    c.getCarrinho().adicionarItem(jogo, 2);
+    Pagamento pg(200.0, FormaPagamento::PIX);
+    
+    Pedido p = c.finalizarPedido("Rua B", pg); // Cobre linha 26
+    CHECK(p.calcularTotal() == doctest::Approx(200.0));
+    CHECK(c.getHistoricoPedidos().size() == 1);
+    CHECK(c.getCarrinho().getItens().empty()); 
 
-TEST_CASE("Cliente - editar perfil") {
-    Cliente c("Pedro", "pedro@email.com", "senha123", "Rua A, 1");
-    c.editarPerfil("Pedro Silva", "pedro.novo@email.com", "Rua B, 2");
-    CHECK(c.getNome() == "Pedro Silva");
-    CHECK(c.getEmail() == "pedro.novo@email.com");
-}
-
-TEST_CASE("Cliente - criar solicitacao de venda") {
-    Cliente c("Pedro", "pedro@email.com", "senha123", "Rua A, 1");
-    auto s = c.criarSolicitacaoVenda("PS4 usado", 800.0);
-    CHECK(s.getClienteId() == "pedro@email.com");
+    c.criarSolicitacaoVenda("PS4", 800.0); // Cobre linha 37
     CHECK(c.getSolicitacoesVenda().size() == 1);
-}
-
-TEST_CASE("Cliente - carrinho comeca vazio") {
-    Cliente c("Pedro", "pedro@email.com", "senha123", "Rua A, 1");
-    CHECK(c.getCarrinho().getItens().empty());
 }

@@ -1,4 +1,5 @@
 #include "Jogo.hpp"
+#include <sstream>
 
 Jogo::Jogo(const std::string& titulo, const std::string& plataforma,
            double preco, Condicao condicao, int quantidadeEstoque,
@@ -9,8 +10,15 @@ Jogo::Jogo(const std::string& titulo, const std::string& plataforma,
 std::string Jogo::getCategoria() const { return "Jogo"; }
 
 std::string Jogo::getDescricaoDetalhada() const {
-    // TODO (C8): montar descricao completa (titulo, genero, classificacao etc.).
-    return "";
+    std::ostringstream oss;
+    oss << "Jogo: " << titulo_
+        << " | Plataforma: " << plataforma_
+        << " | Genero: " << genero_
+        << " | Classificacao: " << classificacaoIndicativa_
+        << " | Preco: R$ " << preco_
+        << " | Condicao: " << (condicao_ == Condicao::NOVO ? "Novo" : "Usado")
+        << " | Estoque: " << quantidadeEstoque_;
+    return oss.str();
 }
 
 std::string Jogo::getGenero() const { return genero_; }

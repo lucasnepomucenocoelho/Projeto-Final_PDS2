@@ -1,28 +1,24 @@
 #include "Estoque.hpp"
+#include <algorithm>
 
 void Estoque::adicionarProduto(std::shared_ptr<Produto> produto) {
-    // TODO (C8): adicionar produto a produtos_.
-    (void)produto;
+    if (produto) produtos_.push_back(produto);
 }
 
-bool Estoque::verificarDisponibilidade(const std::shared_ptr<Produto>& produto,
-                                        int quantidade) const {
-    // TODO (C8): delegar para produto->verificarDisponibilidade(quantidade).
-    (void)produto;
-    (void)quantidade;
-    return false;
+bool Estoque::verificarDisponibilidade(const std::shared_ptr<Produto>& produto, int quantidade) const {
+    if (!produto) return false;
+    return produto->verificarDisponibilidade(quantidade);
 }
 
 void Estoque::darBaixa(const std::shared_ptr<Produto>& produto, int quantidade) {
-    // TODO (C8): reduzir a quantidade em estoque do produto.
-    (void)produto;
-    (void)quantidade;
+    if (!produto || quantidade <= 0) return;
+    int atual = produto->getQuantidadeEstoque();
+    produto->setQuantidadeEstoque(atual - quantidade);
 }
 
 void Estoque::reporQuantidade(const std::shared_ptr<Produto>& produto, int quantidade) {
-    // TODO (C8): atualizar a quantidade em estoque do produto.
-    (void)produto;
-    (void)quantidade;
+    if (!produto || quantidade < 0) return;
+    produto->setQuantidadeEstoque(quantidade);
 }
 
 const std::vector<std::shared_ptr<Produto>>& Estoque::listarProdutos() const {
@@ -30,7 +26,9 @@ const std::vector<std::shared_ptr<Produto>>& Estoque::listarProdutos() const {
 }
 
 bool Estoque::removerProduto(const std::shared_ptr<Produto>& produto) {
-    // TODO (C8): remover produto de produtos_, validando pedidos pendentes.
-    (void)produto;
-    return false;
+    if (!produto) return false;
+    auto it = std::remove(produtos_.begin(), produtos_.end(), produto);
+    if (it == produtos_.end()) return false;
+    produtos_.erase(it, produtos_.end());
+    return true;
 }
