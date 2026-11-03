@@ -1,7 +1,12 @@
 #include "Pagamento.hpp"
+#include <stdexcept>
 
 Pagamento::Pagamento(double valor, FormaPagamento forma)
-    : valor_(valor), forma_(forma), status_(StatusPagamento::PENDENTE) {}
+    : valor_(valor), forma_(forma), status_(StatusPagamento::PENDENTE) {
+    if (valor <= 0.0) {
+        throw std::invalid_argument("O valor do pagamento deve ser maior que zero.");
+    }
+}
 
 bool Pagamento::processar() {
     if (valor_ <= 0.0) {
