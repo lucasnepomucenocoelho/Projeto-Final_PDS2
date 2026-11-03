@@ -7,11 +7,11 @@
 
 #include "Estoque.hpp"
 #include "Cliente.hpp"
-#include "Administrador.hpp"
 #include "Jogo.hpp"
 #include "Console.hpp"
 #include "Acessorio.hpp"
 #include "Pedido.hpp"
+#include "Persistencia.hpp" // <--- Inclusão da persistência (Pedro)
 
 void limparBuffer() {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -19,23 +19,34 @@ void limparBuffer() {
 
 int main() {
     std::cin.exceptions(std::ios::failbit | std::ios::badbit);
-
     Estoque estoque;
-    Cliente cliente("Pedro", "pedro@email.com", "senha123", "Rua A, 1");
-    
+
+    // --- INÍCIO DA PARTE DO PEDRO (INTEGRANTE 4) ---
+    // Carrega os dados do arquivo se existirem
     try {
-        estoque.adicionarProduto(std::make_shared<Jogo>(
-            "Elden Ring", "PS5", 250.0, Condicao::NOVO, 10, "RPG", "16"));
-        estoque.adicionarProduto(std::make_shared<Console>(
-            "PlayStation 5", "PS5", 4500.0, Condicao::NOVO, 3, 825, true));
-        estoque.adicionarProduto(std::make_shared<Acessorio>(
-            "Controle DualSense", "PS5", 400.0, Condicao::NOVO, 8, "Controle", "PS5, PC"));
-        estoque.adicionarProduto(std::make_shared<Jogo>(
-            "Zelda", "Switch", 350.0, Condicao::NOVO, 5, "Aventura", "L"));
+        Persistencia::carregar(estoque, "catalogo.txt");
     } catch (const std::exception& e) {
-        std::cerr << "Erro ao inicializar catalogo: " << e.what() << "\n";
+        std::cerr << "Aviso ao carregar catalogo: " << e.what() << "\n";
     }
 
+    // Se o estoque estiver vazio (primeira vez rodando), popula com produtos iniciais
+    if (estoque.listarProdutos().empty()) {
+        try {
+            estoque.adicionarProduto(std::make_shared<Jogo>(
+                "Elden Ring", "PS5", 250.0, Condicao::NOVO, 10, "RPG", "16"));
+            estoque.adicionarProduto(std::make_shared<Console>(
+                "PlayStation 5", "PS5", 4500.0, Condicao::NOVO, 3, 825, true));
+            estoque.adicionarProduto(std::make_shared<Acessorio>(
+                "Controle DualSense", "PS5", 400.0, Condicao::NOVO, 8, "Controle", "PS5, PC"));
+            estoque.adicionarProduto(std::make_shared<Jogo>(
+                "Zelda", "Switch", 350.0, Condicao::NOVO, 5, "Aventura", "L"));
+        } catch (const std::exception& e) {
+            std::cerr << "Erro ao inicializar catalogo: " << e.what() << "\n";
+        }
+    }
+    // --- FIM DA PARTE DO PEDRO ---
+
+    Cliente cliente("Pedro", "pedro@email.com", "senha123", "Rua A, 1");
     int opcao = -1;
 
     while (opcao != 0) {
@@ -50,6 +61,7 @@ int main() {
         std::cout << "0. Sair\n";
         std::cout << "Escolha uma opcao: ";
         
+        // --- INÍCIO DA PARTE DO LUCAS (INTEGRANTE 3) ---
         try {
             std::cin >> opcao;
         } catch (const std::ios_base::failure& e) {
@@ -58,6 +70,7 @@ int main() {
             std::cout << "Erro: Digite apenas numeros!\n";
             continue;
         }
+        // --- FIM DA PARTE DO LUCAS ---
 
         switch (opcao) {
             case 1: {
@@ -155,9 +168,17 @@ int main() {
                 }
                 break;
             }
-            case 0:
-                std::cout << "Saindo da loja... Ate logo!\n";
+            case 0: {
+                std::cout << "Salvando dados e saindo...\n";
+                // --- INÍCIO DA PARTE DO PEDRO (SALVAR) ---
+                try {
+                    Persistencia::salvar(estoque, "catalogo.txt"); 
+                } catch (const std::exception& e) {
+                    std::cerr << "Erro ao salvar catalogo: " << e.what() << "\n";
+                }
+                // --- FIM DA PARTE DO PEDRO ---
                 break;
+            }
             default:
                 std::cout << "Opcao invalida.\n";
         }
