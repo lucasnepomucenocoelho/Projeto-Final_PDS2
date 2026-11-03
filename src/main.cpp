@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <limits>
+#include <stdexcept>
 
 #include "Estoque.hpp"
 #include "Cliente.hpp"
@@ -17,19 +18,23 @@ void limparBuffer() {
 }
 
 int main() {
-    // Inicializa os dados básicos
+    std::cin.exceptions(std::ios::failbit | std::ios::badbit);
+
     Estoque estoque;
     Cliente cliente("Pedro", "pedro@email.com", "senha123", "Rua A, 1");
     
-    // Popula o catálogo com alguns produtos
-    estoque.adicionarProduto(std::make_shared<Jogo>(
-        "Elden Ring", "PS5", 250.0, Condicao::NOVO, 10, "RPG", "16"));
-    estoque.adicionarProduto(std::make_shared<Console>(
-        "PlayStation 5", "PS5", 4500.0, Condicao::NOVO, 3, 825, true));
-    estoque.adicionarProduto(std::make_shared<Acessorio>(
-        "Controle DualSense", "PS5", 400.0, Condicao::NOVO, 8, "Controle", "PS5, PC"));
-    estoque.adicionarProduto(std::make_shared<Jogo>(
-        "Zelda", "Switch", 350.0, Condicao::NOVO, 5, "Aventura", "L"));
+    try {
+        estoque.adicionarProduto(std::make_shared<Jogo>(
+            "Elden Ring", "PS5", 250.0, Condicao::NOVO, 10, "RPG", "16"));
+        estoque.adicionarProduto(std::make_shared<Console>(
+            "PlayStation 5", "PS5", 4500.0, Condicao::NOVO, 3, 825, true));
+        estoque.adicionarProduto(std::make_shared<Acessorio>(
+            "Controle DualSense", "PS5", 400.0, Condicao::NOVO, 8, "Controle", "PS5, PC"));
+        estoque.adicionarProduto(std::make_shared<Jogo>(
+            "Zelda", "Switch", 350.0, Condicao::NOVO, 5, "Aventura", "L"));
+    } catch (const std::exception& e) {
+        std::cerr << "Erro ao inicializar catalogo: " << e.what() << "\n";
+    }
 
     int opcao = -1;
 
@@ -44,12 +49,13 @@ int main() {
         std::cout << "5. Historico de Pedidos\n";
         std::cout << "0. Sair\n";
         std::cout << "Escolha uma opcao: ";
-        std::cin >> opcao;
-
-        if (std::cin.fail()) {
+        
+        try {
+            std::cin >> opcao;
+        } catch (const std::ios_base::failure& e) {
             std::cin.clear();
             limparBuffer();
-            std::cout << "Entrada invalida. Tente novamente.\n";
+            std::cout << "Erro: Digite apenas numeros!\n";
             continue;
         }
 
@@ -67,21 +73,26 @@ int main() {
                 const auto& produtos = estoque.listarProdutos();
                 
                 std::cout << "Digite o indice do produto: ";
-                std::cin >> idx;
+                try { std::cin >> idx; } 
+                catch (...) { std::cin.clear(); limparBuffer(); std::cout << "Entrada invalida.\n"; break; }
+                
                 std::cout << "Digite a quantidade: ";
-                std::cin >> qtd;
+                try { std::cin >> qtd; } 
+                catch (...) { std::cin.clear(); limparBuffer(); std::cout << "Entrada invalida.\n"; break; }
 
-                if (std::cin.fail() || idx < 0 || idx >= (int)produtos.size()) {
-                    std::cin.clear();
-                    limparBuffer();
+                if (idx < 0 || idx >= (int)produtos.size()) {
                     std::cout << "Indice invalido.\n";
                     break;
                 }
 
-                if (cliente.getCarrinho().adicionarItem(produtos[idx], qtd)) {
-                    std::cout << "Produto adicionado ao carrinho!\n";
-                } else {
-                    std::cout << "Erro: Estoque insuficiente ou quantidade invalida.\n";
+                try {
+                    if (cliente.getCarrinho().adicionarItem(produtos[idx], qtd)) {
+                        std::cout << "Produto adicionado ao carrinho!\n";
+                    } else {
+                        std::cout << "Erro: Estoque insuficiente.\n";
+                    }
+                } catch (const std::invalid_argument& e) {
+                    std::cout << "Erro de validacao: " << e.what() << "\n";
                 }
                 break;
             }
@@ -111,19 +122,24 @@ int main() {
                 
                 int formaInt;
                 std::cout << "Forma de Pagamento (1-PIX, 2-CARTAO, 3-BOLETO): ";
-                std::cin >> formaInt;
+                try { std::cin >> formaInt; } 
+                catch (...) { std::cin.clear(); limparBuffer(); std::cout << "Entrada invalida.\n"; break; }
                 
                 FormaPagamento forma = FormaPagamento::PIX;
                 if (formaInt == 2) forma = FormaPagamento::CARTAO;
                 else if (formaInt == 3) forma = FormaPagamento::BOLETO;
 
-                Pagamento pg(total, forma);
-                Pedido pedido = cliente.finalizarPedido("Rua A, 1", pg);
-                
-                if (pedido.processarPagamento()) {
-                    std::cout << "Pagamento APROVADO! Pedido realizado com sucesso.\n";
-                } else {
-                    std::cout << "Pagamento PENDENTE/RECUSADO. Verifique sua forma de pagamento.\n";
+                try {
+                    Pagamento pg(total, forma);
+                    Pedido pedido = cliente.finalizarPedido("Rua A, 1", pg);
+                    
+                    if (pedido.processarPagamento()) {
+                        std::cout << "Pagamento APROVADO! Pedido realizado com sucesso.\n";
+                    } else {
+                        std::cout << "Pagamento PENDENTE/RECUSADO. Verifique sua forma de pagamento.\n";
+                    }
+                } catch (const std::exception& e) {
+                    std::cout << "Erro no pagamento: " << e.what() << "\n";
                 }
                 break;
             }
