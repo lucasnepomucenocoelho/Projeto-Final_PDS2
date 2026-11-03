@@ -1,11 +1,15 @@
 #include "Jogo.hpp"
 #include <sstream>
+#include <stdexcept>
 
 Jogo::Jogo(const std::string& titulo, const std::string& plataforma,
            double preco, Condicao condicao, int quantidadeEstoque,
            const std::string& genero, const std::string& classificacaoIndicativa)
     : Produto(titulo, plataforma, preco, condicao, quantidadeEstoque),
-      genero_(genero), classificacaoIndicativa_(classificacaoIndicativa) {}
+      genero_(genero), classificacaoIndicativa_(classificacaoIndicativa) {
+    if (genero.empty()) throw std::invalid_argument("O genero nao pode ser vazio");
+    if (classificacaoIndicativa.empty()) throw std::invalid_argument("A classificacao nao pode ser vazia");
+}
 
 std::string Jogo::getCategoria() const { return "Jogo"; }
 

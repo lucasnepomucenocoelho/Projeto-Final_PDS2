@@ -1,12 +1,14 @@
- #include "Produto.hpp"
+#include "Produto.hpp"
 #include <stdexcept>
 
 Produto::Produto(const std::string& titulo, const std::string& plataforma,
                   double preco, Condicao condicao, int quantidadeEstoque)
     : titulo_(titulo), plataforma_(plataforma), preco_(preco),
       condicao_(condicao), quantidadeEstoque_(quantidadeEstoque) {
+    if (titulo.empty()) throw std::invalid_argument("O titulo nao pode ser vazio");
+    if (plataforma.empty()) throw std::invalid_argument("A plataforma nao pode ser vazia");
     if (preco < 0.0) throw std::invalid_argument("Preco nao pode ser negativo");
-    if (quantidadeEstoque < 0) throw std::invalid_argument("Quantidade nao pode ser negativa");
+    if (quantidadeEstoque < 0) throw std::invalid_argument("Estoque nao pode ser negativo");
 }
 
 bool Produto::verificarDisponibilidade(int quantidade) const {
@@ -18,7 +20,7 @@ bool Produto::estaEsgotado() const {
 }
 
 void Produto::atualizarPreco(double novoPreco) {
-    if (novoPreco < 0.0) throw std::invalid_argument("Preco nao pode ser negativo");
+    if (novoPreco < 0.0) throw std::invalid_argument("Novo preco nao pode ser negativo");
     preco_ = novoPreco;
 }
 

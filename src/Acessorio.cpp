@@ -1,15 +1,16 @@
 #include "Acessorio.hpp"
 #include <sstream>
+#include <stdexcept>
 
 Acessorio::Acessorio(const std::string& titulo, const std::string& plataforma,
                       double preco, Condicao condicao, int quantidadeEstoque,
                       const std::string& tipo, const std::string& compativelCom)
     : Produto(titulo, plataforma, preco, condicao, quantidadeEstoque),
-      tipo_(tipo), compativelCom_(compativelCom) {}
-
-std::string Acessorio::getCategoria() const { 
-    return "Acessorio"; 
+      tipo_(tipo), compativelCom_(compativelCom) {
+    if (tipo.empty()) throw std::invalid_argument("O tipo do acessorio nao pode ser vazio");
 }
+
+std::string Acessorio::getCategoria() const { return "Acessorio"; }
 
 std::string Acessorio::getDescricaoDetalhada() const {
     std::ostringstream oss;
@@ -23,6 +24,4 @@ std::string Acessorio::getDescricaoDetalhada() const {
     return oss.str();
 }
 
-std::string Acessorio::getTipo() const { 
-    return tipo_; 
-}
+std::string Acessorio::getTipo() const { return tipo_; }
