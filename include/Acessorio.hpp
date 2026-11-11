@@ -19,14 +19,25 @@ public:
      * @param quantidadeEstoque Quantidade inicial em estoque.
      * @param tipo Tipo do acessório (ex.: controle, headset, volante).
      * @param compativelCom Plataformas compatíveis, separadas por vírgula.
+     * @throws std::invalid_argument se o tipo for vazio.
      */
     Acessorio(const std::string& titulo, const std::string& plataforma,
               double preco, Condicao condicao, int quantidadeEstoque,
               const std::string& tipo, const std::string& compativelCom);
 
+    /**
+     * @brief Retorna a categoria "Acessorio".
+     */
     std::string getCategoria() const override;
+
+    /**
+     * @brief Monta a descrição detalhada do acessório.
+     */
     std::string getDescricaoDetalhada() const override;
 
+    /**
+     * @brief Retorna o tipo do acessório.
+     */
     std::string getTipo() const;
 
 private:

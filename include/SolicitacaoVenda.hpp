@@ -19,7 +19,7 @@ public:
     /**
      * @brief Construtor da classe SolicitacaoVenda.
      * @param clienteId Identificador (email) do cliente vendedor.
-     * @param descricaoProduto Descrição do produto ofertado (tipo, plataforma, estado).
+     * @param descricaoProduto Descrição do produto ofertado.
      * @param precoSugerido Preço sugerido pelo cliente.
      */
     SolicitacaoVenda(const std::string& clienteId,
@@ -39,8 +39,19 @@ public:
      */
     void recusar(const std::string& justificativa);
 
+    /**
+     * @brief Retorna o status atual da solicitação.
+     */
     StatusSolicitacao getStatus() const;
+
+    /**
+     * @brief Retorna o identificador do cliente vendedor.
+     */
     std::string getClienteId() const;
+
+    /**
+     * @brief Retorna o preço final definido pelo administrador.
+     */
     double getPrecoFinal() const;
 
 private:
