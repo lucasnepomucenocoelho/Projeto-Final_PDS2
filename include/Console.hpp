@@ -19,14 +19,25 @@ public:
      * @param quantidadeEstoque Quantidade inicial em estoque.
      * @param capacidadeArmazenamento Capacidade de armazenamento em GB.
      * @param acompanhaControle Indica se acompanha ao menos um controle.
+     * @throws std::invalid_argument se a capacidade for menor ou igual a zero.
      */
     Console(const std::string& titulo, const std::string& plataforma,
             double preco, Condicao condicao, int quantidadeEstoque,
             int capacidadeArmazenamento, bool acompanhaControle);
 
+    /**
+     * @brief Retorna a categoria "Console".
+     */
     std::string getCategoria() const override;
+
+    /**
+     * @brief Monta a descrição detalhada do console.
+     */
     std::string getDescricaoDetalhada() const override;
 
+    /**
+     * @brief Retorna a capacidade de armazenamento em GB.
+     */
     int getCapacidadeArmazenamento() const;
 
 private:
