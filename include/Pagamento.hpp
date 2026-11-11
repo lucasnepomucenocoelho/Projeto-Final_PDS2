@@ -21,6 +21,7 @@ public:
      * @brief Construtor da classe Pagamento.
      * @param valor Valor total a ser pago.
      * @param forma Forma de pagamento escolhida.
+     * @throws std::invalid_argument se o valor for menor ou igual a zero.
      */
     Pagamento(double valor, FormaPagamento forma);
 
@@ -30,8 +31,19 @@ public:
      */
     bool processar();
 
+    /**
+     * @brief Retorna o status atual do pagamento.
+     */
     StatusPagamento getStatus() const;
+
+    /**
+     * @brief Retorna o valor do pagamento.
+     */
     double getValor() const;
+
+    /**
+     * @brief Retorna a forma de pagamento escolhida.
+     */
     FormaPagamento getForma() const;
 
 private:

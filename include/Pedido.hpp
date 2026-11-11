@@ -28,27 +28,41 @@ public:
 
     /**
      * @brief Calcula o valor total do pedido.
+     * @return O valor total somado de todos os itens.
      */
     double calcularTotal() const;
 
     /**
      * @brief Solicita o processamento do pagamento associado.
+     * @return true se o pagamento for aprovado, false caso contrário.
      */
     bool processarPagamento();
 
     /**
      * @brief Atualiza o status do pedido.
+     * @param novoStatus O novo status a ser atribuído.
      */
     void atualizarStatus(StatusPedido novoStatus);
 
     /**
      * @brief Cancela o pedido, caso ainda esteja pendente.
-     * @return true se cancelado, false se já tiver sido enviado.
+     * @return true se cancelado com sucesso, false se já tiver sido enviado.
      */
     bool cancelar();
 
+    /**
+     * @brief Retorna o status atual do pedido.
+     */
     StatusPedido getStatus() const;
+
+    /**
+     * @brief Retorna os itens que compõem o pedido.
+     */
     const std::vector<ItemCompra>& getItens() const;
+
+    /**
+     * @brief Retorna o endereço de entrega do pedido.
+     */
     std::string getEnderecoEntrega() const;
 
 private:
