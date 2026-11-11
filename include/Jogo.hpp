@@ -7,6 +7,7 @@
 /**
  * @class Jogo
  * @brief Representa um jogo eletrônico vendido na loja.
+ * Herda de Produto e adiciona atributos específicos de jogos.
  */
 class Jogo : public Produto {
 public:
@@ -19,14 +20,25 @@ public:
      * @param quantidadeEstoque Quantidade inicial em estoque.
      * @param genero Gênero do jogo (ex.: RPG, ação, esporte).
      * @param classificacaoIndicativa Classificação etária (ex.: "L", "12", "18").
+     * @throws std::invalid_argument se gênero ou classificação forem vazios.
      */
     Jogo(const std::string& titulo, const std::string& plataforma,
          double preco, Condicao condicao, int quantidadeEstoque,
          const std::string& genero, const std::string& classificacaoIndicativa);
 
+    /**
+     * @brief Retorna a categoria "Jogo".
+     */
     std::string getCategoria() const override;
+
+    /**
+     * @brief Monta a descrição detalhada do jogo com todos os seus atributos.
+     */
     std::string getDescricaoDetalhada() const override;
 
+    /**
+     * @brief Retorna o gênero do jogo.
+     */
     std::string getGenero() const;
 
 private:
